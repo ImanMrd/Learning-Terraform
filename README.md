@@ -28,3 +28,46 @@ The code is cleanly separated into the following files for readability and maint
  ┣ 📜 variables.tf   # Defines input variables (e.g., Environment, Region)
  ┣ 📜 outputs.tf     # Defines the console outputs (e.g., VPC_id, EC2_id)
  ┗ 📜 .gitignore     # Prevents sensitive local state files from being pushed to GitHub
+
+
+ ⚙️ Prerequisites
+Before you can run this code, ensure you have the following installed and configured:
+
+Terraform (v1.0.0+)
+
+AWS CLI installed and configured with your IAM credentials (aws configure).
+
+Note: The S3 bucket used for the backend state must be created manually in AWS before running terraform init.
+
+🚀 How to Run
+Follow these steps to deploy the infrastructure to your AWS account:
+
+1. Initialize the working directory
+Downloads the required provider plugins and sets up the remote backend.
+
+Bash
+terraform init
+2. Validate the configuration
+Checks the code for any syntax errors or invalid arguments.
+
+Bash
+terraform validate
+3. Review the execution plan
+See exactly what resources Terraform will create without actually deploying them.
+
+Bash
+terraform plan
+4. Deploy the infrastructure
+Apply the configuration to create the resources in AWS.
+
+Bash
+terraform apply
+5. Clean up (Optional)
+When you are done testing, destroy the resources to avoid incurring AWS charges.
+
+Bash
+terraform destroy
+👤 Author
+Iman Moradi Nezhad Master's Student at the University of Genova, Italy.
+
+Passionate about Cloud Engineering, AWS, and Infrastructure as Code.
