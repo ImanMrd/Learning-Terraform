@@ -1,0 +1,11 @@
+## to make sure these files are not accidentally committed to the repository, we can add them to the .gitignore file
+.terraform*
+*.tfstate
+*.tfstate.backup
+.terraformrc
+terraform.tfvars
+terraform.tfvars.json
+.terraformrc
+.terraform.lock.hcl
+*.log
+.terraform/
