@@ -29,6 +29,7 @@ The code is cleanly separated into the following files for readability and maint
  ┣ 📜 outputs.tf     # Defines the console outputs (e.g., VPC_id, EC2_id)
  ┗ 📜 .gitignore     # Prevents sensitive local state files from being pushed to GitHub
 ```
+
 ## ⚙️ Prerequisites
 
 Before you can run this code, ensure you have the following installed and configured:
@@ -37,41 +38,53 @@ Before you can run this code, ensure you have the following installed and config
 *   **AWS CLI** installed and configured with your IAM credentials:
     ```bash
     aws configure
+    
+```
 
-[!IMPORTANT]
-The S3 bucket used for the backend state must be created manually in the AWS Console before running terraform init.
+> [!IMPORTANT]
+> The **S3 bucket** used for the backend state must be created manually in the AWS Console before running `terraform init`.
+
+---
+
+## 🚀 How to Run
 
 Follow these steps to deploy the infrastructure to your AWS account:
 
-1. Initialize
+### 1. Initialize
 Initialize the working directory, download provider plugins, and set up the remote backend.
-
-Bash
+```bash
 terraform init
-2. Validate
+```
+
+### 2. Validate
 Check the configuration files for syntax errors or invalid arguments.
-
-Bash
+```bash
 terraform validate
-3. Plan
+```
+
+### 3. Plan
 Review the execution plan to see exactly what resources Terraform will create.
-
-Bash
+```bash
 terraform plan
-4. Apply
-Provision the infrastructure in your AWS account. (Type yes when prompted).
+```
 
-Bash
+### 4. Apply
+Provision the infrastructure in your AWS account. *(Type `yes` when prompted).*
+```bash
 terraform apply
-5. Destroy (Optional)
+```
+
+### 5. Destroy (Optional)
 Clean up your environment and delete all resources to avoid unnecessary AWS charges.
-
-Bash
+```bash
 terraform destroy
+```
 
-👤 Author
-Iman Moradi Nezhad
+---
 
-Master's Student at the University of Genova, Italy
+## 👤 Author
+
+**Iman Moradi Nezhad**  
+*Master's Student at the University of Genova, Italy*  
 
 ☁️ Passionate about Cloud Engineering, AWS, and Infrastructure as Code.
