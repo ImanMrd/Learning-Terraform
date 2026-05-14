@@ -28,7 +28,7 @@ The code is cleanly separated into the following files for readability and maint
  ┣ 📜 variables.tf   # Defines input variables (e.g., Environment, Region)
  ┣ 📜 outputs.tf     # Defines the console outputs (e.g., VPC_id, EC2_id)
  ┗ 📜 .gitignore     # Prevents sensitive local state files from being pushed to GitHub
-
+```
 
  ⚙️ Prerequisites
 Before you can run this code, ensure you have the following installed and configured:
