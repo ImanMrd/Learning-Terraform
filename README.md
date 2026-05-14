@@ -36,10 +36,10 @@ Before you can run this code, ensure you have the following installed and config
 
 *   **Terraform** (v1.0.0+)
 *   **AWS CLI** installed and configured with your IAM credentials:
+
     ```bash
     aws configure
-    
-```
+    ```
 
 > [!IMPORTANT]
 > The **S3 bucket** used for the backend state must be created manually in the AWS Console before running `terraform init`.
@@ -52,12 +52,14 @@ Follow these steps to deploy the infrastructure to your AWS account:
 
 ### 1. Initialize
 Initialize the working directory, download provider plugins, and set up the remote backend.
+
 ```bash
 terraform init
 ```
 
 ### 2. Validate
 Check the configuration files for syntax errors or invalid arguments.
+
 ```bash
 terraform validate
 ```
