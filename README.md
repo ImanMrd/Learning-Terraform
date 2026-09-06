@@ -10,7 +10,7 @@ Welcome to my foundational Infrastructure as Code (IaC) repository! This project
 
 This project deploys a basic AWS environment, utilizing an S3 bucket for secure, remote state management.
 
-`mermaid
+```mermaid
 graph TD
     subgraph AWS Cloud
         subgraph VPC [VPC 10.0.0.0/16]
@@ -20,24 +20,24 @@ graph TD
     end
     TF[Terraform CLI] -->|Deploys| VPC
     TF -->|Stores State| S3
-`
+```
 
-- **Amazon VPC:** A Virtual Private Cloud with a 10.0.0.0/16 CIDR block providing an isolated virtual network.
-- **Amazon EC2 Instance:** A scalable 	2.micro virtual machine running Amazon Linux 2.
-- **Amazon S3 Bucket:** A dedicated bucket (iman-first-ever-s3-bucket) configured to securely store the Terraform remote state.
+- **Amazon VPC:** A Virtual Private Cloud with a `10.0.0.0/16` CIDR block providing an isolated virtual network.
+- **Amazon EC2 Instance:** A scalable `t2.micro` virtual machine running Amazon Linux 2.
+- **Amazon S3 Bucket:** A dedicated bucket (`iman-first-ever-s3-bucket`) configured to securely store the Terraform remote state.
 
 ## 🗂️ Project Structure
 
 The configuration is modularized according to HashiCorp best practices:
 
-`	ext
+```text
 📦 Learning-Terraform
  ┣ 📜 backend.tf     # Configures the S3 backend for remote state storage
  ┣ 📜 main.tf        # Main configuration defining VPC and EC2 resources
  ┣ 📜 providers.tf   # Specifies AWS provider (v6.42.0) and random provider
  ┣ 📜 variables.tf   # Defines input variables (Environment, region)
  ┗ 📜 README.md      # Project documentation
-`
+```
 
 ## 🚀 Quick Start
 
@@ -48,35 +48,35 @@ The configuration is modularized according to HashiCorp best practices:
 ### Deployment Steps
 
 1. **Clone the repository:**
-   `ash
+   ```bash
    git clone https://github.com/ImanMrd/Learning-Terraform.git
    cd Learning-Terraform
-   `
+   ```
 
 2. **Initialize Terraform:**
    This downloads the required providers and initializes the remote S3 backend.
-   `ash
+   ```bash
    terraform init
-   `
+   ```
 
 3. **Review the execution plan:**
    See exactly what resources will be created.
-   `ash
+   ```bash
    terraform plan
-   `
+   ```
 
 4. **Apply the configuration:**
    Provision the infrastructure in your AWS account.
-   `ash
+   ```bash
    terraform apply
-   `
+   ```
 
 5. **Clean up:**
    To avoid unexpected AWS charges, destroy the infrastructure when done.
-   `ash
+   ```bash
    terraform destroy
-   `
+   ```
 
 ## 🔐 Security Considerations
 - **Remote State:** State is stored in an S3 bucket, preventing sensitive information from being exposed in local state files or version control.
-- **Resource Tagging:** Resources are automatically tagged with the Environment variable for easier tracking and cost allocation.
+- **Resource Tagging:** Resources are automatically tagged with the `Environment` variable for easier tracking and cost allocation.
