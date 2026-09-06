@@ -1,4 +1,4 @@
-﻿# â˜ï¸ AWS Infrastructure Provisioning with Terraform
+# ☁️ AWS Infrastructure Provisioning with Terraform
 
 [![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
@@ -6,7 +6,7 @@
 
 Welcome to my foundational Infrastructure as Code (IaC) repository! This project automatically provisions secure, scalable networking and compute resources in Amazon Web Services (AWS) using Terraform.
 
-## ðŸ—ï¸ Architecture & Resources
+## 🏗️ Architecture & Resources
 
 This project deploys a basic AWS environment, utilizing an S3 bucket for secure, remote state management.
 
@@ -26,20 +26,20 @@ graph TD
 - **Amazon EC2 Instance:** A scalable 	2.micro virtual machine running Amazon Linux 2.
 - **Amazon S3 Bucket:** A dedicated bucket (iman-first-ever-s3-bucket) configured to securely store the Terraform remote state.
 
-## ðŸ—‚ï¸ Project Structure
+## 🗂️ Project Structure
 
 The configuration is modularized according to HashiCorp best practices:
 
 `	ext
-ðŸ“¦ Learning-Terraform
- â”£ ðŸ“œ backend.tf     # Configures the S3 backend for remote state storage
- â”£ ðŸ“œ main.tf        # Main configuration defining VPC and EC2 resources
- â”£ ðŸ“œ providers.tf   # Specifies AWS provider (v6.42.0) and random provider
- â”£ ðŸ“œ variables.tf   # Defines input variables (Environment, region)
- â”— ðŸ“œ README.md      # Project documentation
+📦 Learning-Terraform
+ ┣ 📜 backend.tf     # Configures the S3 backend for remote state storage
+ ┣ 📜 main.tf        # Main configuration defining VPC and EC2 resources
+ ┣ 📜 providers.tf   # Specifies AWS provider (v6.42.0) and random provider
+ ┣ 📜 variables.tf   # Defines input variables (Environment, region)
+ ┗ 📜 README.md      # Project documentation
 `
 
-## ðŸš€ Quick Start
+## 🚀 Quick Start
 
 ### Prerequisites
 - [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
@@ -77,6 +77,6 @@ The configuration is modularized according to HashiCorp best practices:
    terraform destroy
    `
 
-## ðŸ” Security Considerations
+## 🔐 Security Considerations
 - **Remote State:** State is stored in an S3 bucket, preventing sensitive information from being exposed in local state files or version control.
 - **Resource Tagging:** Resources are automatically tagged with the Environment variable for easier tracking and cost allocation.
