@@ -1,92 +1,82 @@
-# 🚀 My First Terraform AWS Project
+﻿# â˜ï¸ AWS Infrastructure Provisioning with Terraform
 
-![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)
-![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Learning-success?style=for-the-badge)
+[![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=for-the-badge&logo=terraform&logoColor=white)](https://www.terraform.io/)
+[![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
+[![Status](https://img.shields.io/badge/Status-Learning-success?style=for-the-badge)]()
 
-Welcome to my very first Infrastructure as Code (IaC) repository! This project was built as part of my journey to become a Cloud Engineer. It uses Terraform to automatically provision foundational networking and compute resources in Amazon Web Services (AWS).
+Welcome to my foundational Infrastructure as Code (IaC) repository! This project automatically provisions secure, scalable networking and compute resources in Amazon Web Services (AWS) using Terraform.
 
-## 📖 Description
+## ðŸ—ï¸ Architecture & Resources
 
-This repository contains Terraform configurations structured according to HashiCorp best practices (separating resources, variables, providers, and outputs). The code provisions a basic AWS environment, utilizing an S3 bucket for secure, remote state management.
+This project deploys a basic AWS environment, utilizing an S3 bucket for secure, remote state management.
 
-### 🏗️ Architecture & Resources
+`mermaid
+graph TD
+    subgraph AWS Cloud
+        subgraph VPC [VPC 10.0.0.0/16]
+            EC2[Amazon EC2 t2.micro]
+        end
+        S3[Amazon S3 Bucket<br/>iman-first-ever-s3-bucket]
+    end
+    TF[Terraform CLI] -->|Deploys| VPC
+    TF -->|Stores State| S3
+`
 
-This project automatically deploys the following AWS infrastructure:
-- **Amazon S3 Bucket:** A dedicated bucket (`iman-first-ever-s3-bucket`) configured to store the Terraform remote state securely.
-- **Amazon VPC:** A Virtual Private Cloud with a `10.0.0.0/16` CIDR block to provide an isolated virtual network.
-- **Amazon EC2 Instance:** A scalable `t2.micro` virtual machine running Amazon Linux 2.
+- **Amazon VPC:** A Virtual Private Cloud with a 10.0.0.0/16 CIDR block providing an isolated virtual network.
+- **Amazon EC2 Instance:** A scalable 	2.micro virtual machine running Amazon Linux 2.
+- **Amazon S3 Bucket:** A dedicated bucket (iman-first-ever-s3-bucket) configured to securely store the Terraform remote state.
 
-## 🗂️ Project Structure
+## ðŸ—‚ï¸ Project Structure
 
-The code is cleanly separated into the following files for readability and maintainability:
+The configuration is modularized according to HashiCorp best practices:
 
-```text
-📦 my-first-terraform-repo
- ┣ 📜 providers.tf   # Contains AWS provider and remote S3 backend configuration
- ┣ 📜 main.tf        # Contains the core infrastructure resources (VPC, EC2, S3)
- ┣ 📜 variables.tf   # Defines input variables (e.g., Environment, Region)
- ┣ 📜 outputs.tf     # Defines the console outputs (e.g., VPC_id, EC2_id)
- ┗ 📜 .gitignore     # Prevents sensitive local state files from being pushed to GitHub
-```
+`	ext
+ðŸ“¦ Learning-Terraform
+ â”£ ðŸ“œ backend.tf     # Configures the S3 backend for remote state storage
+ â”£ ðŸ“œ main.tf        # Main configuration defining VPC and EC2 resources
+ â”£ ðŸ“œ providers.tf   # Specifies AWS provider (v6.42.0) and random provider
+ â”£ ðŸ“œ variables.tf   # Defines input variables (Environment, region)
+ â”— ðŸ“œ README.md      # Project documentation
+`
 
-## ⚙️ Prerequisites
+## ðŸš€ Quick Start
 
-Before you can run this code, ensure you have the following installed and configured:
+### Prerequisites
+- [Terraform](https://developer.hashicorp.com/terraform/downloads) installed
+- AWS CLI installed and configured with appropriate IAM credentials
 
-*   **Terraform** (v1.0.0+)
-*   **AWS CLI** installed and configured with your IAM credentials:
+### Deployment Steps
 
-    ```bash
-    aws configure
-    ```
+1. **Clone the repository:**
+   `ash
+   git clone https://github.com/ImanMrd/Learning-Terraform.git
+   cd Learning-Terraform
+   `
 
-> [!IMPORTANT]
-> The **S3 bucket** used for the backend state must be created manually in the AWS Console before running `terraform init`.
+2. **Initialize Terraform:**
+   This downloads the required providers and initializes the remote S3 backend.
+   `ash
+   terraform init
+   `
 
----
+3. **Review the execution plan:**
+   See exactly what resources will be created.
+   `ash
+   terraform plan
+   `
 
-## 🚀 How to Run
+4. **Apply the configuration:**
+   Provision the infrastructure in your AWS account.
+   `ash
+   terraform apply
+   `
 
-Follow these steps to deploy the infrastructure to your AWS account:
+5. **Clean up:**
+   To avoid unexpected AWS charges, destroy the infrastructure when done.
+   `ash
+   terraform destroy
+   `
 
-### 1. Initialize
-Initialize the working directory, download provider plugins, and set up the remote backend.
-
-```bash
-terraform init
-```
-
-### 2. Validate
-Check the configuration files for syntax errors or invalid arguments.
-
-```bash
-terraform validate
-```
-
-### 3. Plan
-Review the execution plan to see exactly what resources Terraform will create.
-```bash
-terraform plan
-```
-
-### 4. Apply
-Provision the infrastructure in your AWS account. *(Type `yes` when prompted).*
-```bash
-terraform apply
-```
-
-### 5. Destroy (Optional)
-Clean up your environment and delete all resources to avoid unnecessary AWS charges.
-```bash
-terraform destroy
-```
-
----
-
-## 👤 Author
-
-**Iman Moradi Nezhad**  
-*Master's Student at the University of Genova, Italy*  
-
-☁️ Passionate about Cloud Engineering, AWS, and Infrastructure as Code.
+## ðŸ” Security Considerations
+- **Remote State:** State is stored in an S3 bucket, preventing sensitive information from being exposed in local state files or version control.
+- **Resource Tagging:** Resources are automatically tagged with the Environment variable for easier tracking and cost allocation.
